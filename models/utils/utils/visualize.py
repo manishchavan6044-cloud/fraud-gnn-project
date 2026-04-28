@@ -25,3 +25,12 @@ def visualize_graph(data):
 
     plt.title("Fraud Detection Graph\nRed = Fraud, Blue = Normal")
     plt.show()
+
+def plot_loss(losses):
+    import matplotlib.pyplot as plt
+
+    plt.plot(losses)
+    plt.xlabel("Epoch")
+    plt.ylabel("Loss")
+    plt.title("Training Loss Curve")
+    plt.show()
