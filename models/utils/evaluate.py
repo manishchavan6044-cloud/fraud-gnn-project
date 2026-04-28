@@ -13,3 +13,7 @@ pred = model(data.x, data.edge_index).argmax(dim=1)
 
 acc = accuracy_score(data.y, pred)
 print("Accuracy:", acc)
+
+from utils.visualize import visualize_graph
+
+visualize_graph(data)
