@@ -1,12 +1,6 @@
-import torch
-from models.gcn_model import FraudGCN
-from utils.graph_builder import build_graph
+from utils.visualize import plot_loss
 
-data = build_graph("data/transactions.csv")
-
-model = FraudGCN(16, 32, 2)
-optimizer = torch.optim.Adam(model.parameters(), lr=0.01)
-loss_fn = torch.nn.CrossEntropyLoss()
+losses = []
 
 for epoch in range(50):
     model.train()
@@ -18,5 +12,12 @@ for epoch in range(50):
     loss.backward()
     optimizer.step()
 
+    losses.append(loss.item())
+
     print(f"Epoch {epoch}, Loss: {loss.item()}")
+
+# Save model
 torch.save(model.state_dict(), "model.pth")
+
+# Plot loss
+plot_loss(losses)
