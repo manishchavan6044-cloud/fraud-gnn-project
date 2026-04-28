@@ -19,3 +19,4 @@ for epoch in range(50):
     optimizer.step()
 
     print(f"Epoch {epoch}, Loss: {loss.item()}")
+torch.save(model.state_dict(), "model.pth")
